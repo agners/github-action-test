@@ -27,6 +27,7 @@ jobs:
       uses: agners/actions/helpers/version-push@test
       with:
         key: "hassos[]"
+        key-description: "Home Assistant OS"
         version: "5.10"
         channel: "dev"
 
