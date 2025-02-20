@@ -24,7 +24,9 @@ jobs:
           --aarch64 \
           --target /data/alpine \
           --base 3.20
+
     - name: Check qemu version
+      if: always()
       run: |
         ls -la /proc/sys/fs/binfmt_misc/
         qemu-aarch64-static --version
