@@ -13,5 +13,18 @@ jobs:
     steps:
     - name: Check qemu version
       run: |
-        dpkg -l | grep qemu
+        ls -la /proc/sys/fs/binfmt_misc/
+        dpkg -l
 
+    - name: Build base image
+      uses: home-assistant/builder@2024.08.2
+      with:
+        args: |
+          $BUILD_ARGS \
+          --aarch64 \
+          --target /data/alpine \
+          --base 3.20
+    - name: Check qemu version
+      run: |
+        ls -la /proc/sys/fs/binfmt_misc/
+        qemu-aarch64-static --version
